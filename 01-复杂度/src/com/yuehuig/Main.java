@@ -7,13 +7,9 @@ public class Main {
 //		System.out.println(123);
 		
 		System.out.println("*******************");
-		
-		for (int i = 0; i < 10; i++) {
-//			int fibv = fib1(i);
-//			System.out.println(fibv);
-			int result = fib2(i);
-			System.out.println(result);
-		}
+		System.out.println(fib2(10));
+		System.out.println(fib3(10));
+		System.out.println(fib4(10));
 	}
 
 	public static int fib1(int n) {
@@ -48,6 +44,21 @@ public class Main {
 		int first = 0;
 		int second = 1;
 		for (int i = 0; i < n - 1; i++) {
+			second = first + second;
+			first = second - first;
+		}
+		
+		return second;
+	}
+	
+	public static int fib4(int n) {
+		if (n <= 1) {
+			return n;
+		}
+		
+		int first = 0;
+		int second = 1;
+		while (n-- > 0) {
 			second = first + second;
 			first = second - first;
 		}
