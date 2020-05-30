@@ -13,6 +13,7 @@ public class Main {
 		list.add(5);
 		list.add(6);
 		list.remove(3);
+		list.set(1, 5);
 		System.out.println(list);
 	}
 

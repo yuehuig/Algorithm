@@ -50,19 +50,4 @@ public class Main {
 		
 		return second;
 	}
-	
-	public static int fib4(int n) {
-		if (n <= 1) {
-			return n;
-		}
-		
-		int first = 0;
-		int second = 1;
-		while (n-- > 0) {
-			second = first + second;
-			first = second - first;
-		}
-		
-		return second;
-	}
 }

@@ -63,7 +63,7 @@ public class ArrayList {
 	 * @param element
 	 */
 	public void add(int element) {
-		elements[size++] = element;
+		add(size, element);
 	}
 	
 	/**
@@ -71,9 +71,7 @@ public class ArrayList {
 	 * @param index
 	 */
 	public int get(int index) {
-		if (index < 0 || index >= size) {
-			throw new IndexOutOfBoundsException("index: " + index + ", size: " + size);
-		}
+		rangeCheck(index);
 		return elements[index];
 	}
 	
@@ -84,9 +82,7 @@ public class ArrayList {
 	 * @return 原来的元素
 	 */
 	public int set(int index, int element) {
-		if (index < 0 || index >= size) {
-			throw new IndexOutOfBoundsException("index: " + index + ", size: " + size);
-		}
+		rangeCheck(index);
 		int old = elements[index];
 		elements[index] = element;
 		return old;
@@ -97,8 +93,13 @@ public class ArrayList {
 	 * @param index
 	 * @param element
 	 */
-	public E add(int index, E element) {
-		
+	public void add(int index, int element) {
+		rangeCheckForAdd(index);
+		for (int i = size - 1; i >= index; i--) {
+			elements[i + 1] = elements[i];
+		}
+		elements[index] = element;
+		size++;
 	}
 	
 	/**
@@ -107,9 +108,7 @@ public class ArrayList {
 	 * @param element
 	 */
 	public int remove(int index) {
-		if (index < 0 || index >= size) {
-			throw new IndexOutOfBoundsException("index: " + index + ", size: " + size);
-		}
+		rangeCheck(index);
 		int old = elements[index];
 		for (int i = index + 1; i <= size - 1; i++) {
 			elements[i - 1] = elements[i];
@@ -132,6 +131,21 @@ public class ArrayList {
 		return ELEMENT_NOT_FOUND;
 	}
 	
+	private void outOfBounds(int index) {
+		throw new IndexOutOfBoundsException("index: " + index + ", size: " + size);
+	}
+	
+	private void rangeCheck(int index) {
+		if (index < 0 || index >= size) {
+			outOfBounds(index);
+		}
+	}
+	
+	private void rangeCheckForAdd(int index) {
+		if (index < 0 || index > size) {
+			outOfBounds(index);
+		}
+	}
 	
 	@Override
 	public String toString() {
