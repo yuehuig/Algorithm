@@ -29,6 +29,9 @@ public class ArrayList<E> {
 	 * 清除所有元素
 	 */
 	public void clear() {
+		for (int i = 0; i < elements.length; i++) {
+			elements[i] = null;
+		}
 		size = 0;
 	}
 	
@@ -113,7 +116,9 @@ public class ArrayList<E> {
 		for (int i = index + 1; i <= size - 1; i++) {
 			elements[i - 1] = elements[i];
 		}
-		size--;
+//		size--;
+//		elements[size] = null;
+		elements[--size] = null;
 		return old;
 	}
 	
@@ -123,9 +128,17 @@ public class ArrayList<E> {
 	 * @param element
 	 */
 	public int indexOf(E element) {
-		for (int i = 0; i < size; i++) {
-			if (elements[i] == element) {
-				return i;
+		if (element == null) {
+			for (int i = 0; i < size; i++) {
+				if (elements[i] == null) {
+					return i;
+				}
+			}
+		} else {
+			for (int i = 0; i < size; i++) {
+				if (elements[i].equals(element)) {
+					return i;
+				}
 			}
 		}
 		return ELEMENT_NOT_FOUND;

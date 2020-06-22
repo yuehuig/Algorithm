@@ -6,7 +6,7 @@ public class Main {
 		int array[] = new int[] {11, 22, 33};
 		System.out.println(array.toString());
 		
-		ArrayList list = new ArrayList();
+		ArrayList<Integer> list = new ArrayList<Integer>();
 		list.add(3);
 		list.add(3);
 		list.add(4);

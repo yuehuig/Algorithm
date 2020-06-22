@@ -9,7 +9,6 @@ public class Main {
 		System.out.println("*******************");
 		System.out.println(fib2(10));
 		System.out.println(fib3(10));
-		System.out.println(fib4(10));
 	}
 
 	public static int fib1(int n) {
