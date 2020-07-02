@@ -1,11 +1,6 @@
 package com.yuehuig;
 
-public class ArrayList<E> {
-
-	/**
-	 * 元素的数量
-	 */
-	private int size;
+public class ArrayList<E> extends AbstractList<E> {
 	
 	/**
 	 * 所有的元素
@@ -33,31 +28,6 @@ public class ArrayList<E> {
 			elements[i] = null;
 		}
 		size = 0;
-	}
-	
-	/**
-	 * 元素的数量
-	 * @return
-	 */
-	public int size() {
-		return size;
-	}
-	
-	/**
-	 * 是否为空
-	 * @return
-	 */
-	public boolean isEmpty() {
-		return size == 0;
-	}
-
-	/**
-	 * 是否包含某个元素
-	 * @param element
-	 * @return
-	 */
-	public boolean contains(E element) {
-		return indexOf(element) != ELEMENT_NOT_FOUND;
 	}
 	
 	/**
@@ -160,23 +130,7 @@ public class ArrayList<E> {
 			newElements[i] = elements[i];
 		}
 		elements = (E[]) newElements;
-	}
-	
-	private void outOfBounds(int index) {
-		throw new IndexOutOfBoundsException("index: " + index + ", size: " + size);
-	}
-	
-	private void rangeCheck(int index) {
-		if (index < 0 || index >= size) {
-			outOfBounds(index);
-		}
-	}
-	
-	private void rangeCheckForAdd(int index) {
-		if (index < 0 || index > size) {
-			outOfBounds(index);
-		}
-	}
+	}  
 	
 	@Override
 	public String toString() {
