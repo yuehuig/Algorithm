@@ -55,15 +55,38 @@ public class LinkedList<E> extends AbstractList<E> {
 	
 	@Override
 	public E remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		Node<E> node = first;
+		if (index == 0) {
+			first = first.next;
+		} else {
+			Node<E> prev = node(index - 1);
+			node = prev.next;
+			prev.next = prev.next.next;
+		}
+		size--;
+		return node.element;
 	}
 
 
 	@Override
 	public int indexOf(E element) {
-		// TODO Auto-generated method stub
-		return 0;
+		Node<E> node = first;
+		if (element == null) {
+			for (int i = 0; i < size; i++) {
+				if (node.element == null) {
+					return i;
+				}
+				node = node.next;
+			}
+		} else {
+			for (int i = 0; i < size; i++) {
+				if (node.element.equals(element)) {
+					return i;
+				}
+				node = node.next;
+			}
+		}
+		return ELEMENT_NOT_FOUND;
 	}
 	
 	private Node<E> node(int index) {
