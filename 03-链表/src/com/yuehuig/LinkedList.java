@@ -46,10 +46,11 @@ public class LinkedList<E> extends AbstractList<E> {
 	public void add(int index, E element) {
 		if (size == 0) {
 			first = new Node<E>(element, first);
+		} else {
+			Node<E> prev = node(index - 1);
+			Node<E> node = new Node<E>(element, prev.next);
+			prev.next = node;
 		}
-		Node<E> prev = node(index - 1);
-		Node<E> node = new Node<E>(element, prev.next);
-		prev.next = node;
 		size++;
 	}
 	
