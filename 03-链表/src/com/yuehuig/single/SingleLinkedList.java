@@ -1,18 +1,16 @@
-package com.yuehuig;
+package com.yuehuig.single;
 
 import com.yuehuig.AbstractList;
 
-public abstract class LinkedList<E> extends AbstractList<E> {
+public abstract class SingleLinkedList<E> extends AbstractList<E> {
 	
 	private Node<E> first;
-	private Node<E> last;
+	
 	
 	private static class Node<E> {
-		Node<E> prev;
 		E element;
 		Node<E> next;
-		public Node(Node<E> prev, E element, Node<E> next) {
-			this.prev = prev;
+		public Node(E element, Node<E> next) {
 			this.element = element;
 			this.next = next;
 		}
@@ -22,7 +20,6 @@ public abstract class LinkedList<E> extends AbstractList<E> {
 	public void clear() {
 		size = 0;
 		first = null;
-		last = null;
 	}
 
 	@Override
@@ -41,33 +38,18 @@ public abstract class LinkedList<E> extends AbstractList<E> {
 
 	@Override
 	public void add(int index, E element) {
-		rangeCheck(index);
-		
-		if (index == size) {
-			Node<E> oldLast = last;
-			last = new Node<E>(oldLast, element, null);
-			if (oldLast == null) { /// 一个元素也没有
-				first = last;
-			} else {
-				oldLast.next = last;
-			}
+		if (size == 0) {
+			first = new Node<E>(element, first);
 		} else {
-			Node<E> next = node(index);
-			Node<E> prev = next.prev;
-			Node<E> node = new Node<E>(prev, element, next);
-			next.prev = node;
-			if (prev == null) {
-				first = node;
-			} else {
-				prev.next = node;
-			}
+			Node<E> prev = node(index - 1);
+			Node<E> node = new Node<E>(element, prev.next);
+			prev.next = node;
 		}
 		size++;
 	}
 	
 	@Override
 	public E remove(int index) {
-		rangeCheck(index);
 		Node<E> node = first;
 		if (index == 0) {
 			first = first.next;
@@ -103,19 +85,11 @@ public abstract class LinkedList<E> extends AbstractList<E> {
 	}
 	
 	private Node<E> node(int index) {
-		rangeCheck(index);		
-		if (index < (size << 1)) {
-			Node<E> node = first;
-			for (int i = 0; i < index; i++) {
-				node = node.next;
-			}
-			return node;
-		} else {
-			Node<E> node = last;
-			for (int i = size -1; i > index; i--) {
-				node = node.prev;
-			}
-			return node;
+		rangeCheck(index);
+		Node<E> node = first;
+		for (int i = 0; i < index; i++) {
+			node = node.next;
 		}
+		return node;
 	}
 }
