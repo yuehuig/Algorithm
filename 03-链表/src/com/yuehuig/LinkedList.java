@@ -68,14 +68,23 @@ public abstract class LinkedList<E> extends AbstractList<E> {
 	@Override
 	public E remove(int index) {
 		rangeCheck(index);
-		Node<E> node = first;
-		if (index == 0) {
-			first = first.next;
+		
+		Node<E> node = node(index);
+		Node<E> prev = node.prev;
+		Node<E> next = node.next;
+		
+		if (prev == null) {
+			first = prev;
 		} else {
-			Node<E> prev = node(index - 1);
-			node = prev.next;
-			prev.next = prev.next.next;
+			prev.next = next;
 		}
+		
+		if (next == null) {
+			last = next;
+		} else {
+			next.prev = prev;
+		}
+		
 		size--;
 		return node.element;
 	}
