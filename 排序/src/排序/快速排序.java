@@ -14,7 +14,6 @@ public class 快速排序 {
 		Integer mid = provitIndex(array, begin, end);
 		sort(array, begin, mid);
 		sort(array, mid+1, end); // T(n - 1)
-		
 	}
 	
 	public static int provitIndex(Integer[] array, Integer begin, Integer end) {
@@ -24,24 +23,26 @@ public class 快速排序 {
 		end--;
 		while (begin < end) {
 			while (begin < end) {
-				if (provit < array[end]) {
+				if (provit < array[end]) { // 右边元素 > 轴点元素
 					end--;
-				} else {
-					array[begin++] = array[end];
+				} else { // 右边元素 <= 轴点元素
+					array[begin++] = array[end]; 
 					break;
 				}
 			}
 			
 			while (begin < end) {
-				if (array[begin] < provit) {
+				if (array[begin] < provit) { // 左边元素 < 轴点元素
 					begin++;
-				} else {
+				} else { // 左边元素 >= 轴点元素
 					array[end--] = array[begin];
 					break;
 				}
 			}
 		}
+		// 将轴点元素放入最终位置
 		array[begin] = provit;
+		// 返回轴点元素位置
 		return begin;
 	}
 	
