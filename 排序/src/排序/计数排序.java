@@ -104,12 +104,12 @@ public class 计数排序 {
 //			sortArr[] = array[i];  从原数组取出一个元素
 			
 			// array[i] - min -> counts数组中的索引
-			// counts[array[i] - min] -> 取出该索引对应 小于等于该元素出现的次数 等于是前边排了多少个元素   值是累加的之前
+			// counts[array[i] - min] -> 取出该索引对应 小于等于该元素出现的次数 等于是排了多少个元素   值是累加的之前
 			
-//			counts[array[i] - min] -= 1;
-//			sortArr[counts[array[i] - min]] = array[i];
+			counts[array[i] - min] -= 1;
+			sortArr[counts[array[i] - min]] = array[i];
 			
-			sortArr[--counts[array[i] - min]] = array[i];
+//			sortArr[--counts[array[i] - min]] = array[i];
 		}
 		
 		for (int i = 0; i < sortArr.length; i++) {
