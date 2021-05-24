@@ -32,10 +32,11 @@ public class 插入排序 {
 	public static void insertionSort2(Integer[] array) {
 		for (int i = 1; i < array.length; i++) {
 			Integer curValue = array[i];
-			Integer index = i - 1;
+			Integer index = i;
 			for (int j = i; j > 0; j--) {
-				if (curValue < array[j-1]) {
-					array[j] = array[j-1];
+				if (curValue < array[j - 1]) {
+					// 每一个值向后移动
+					array[j] = array[j - 1];
 					index = j - 1;
 				}
 			}
