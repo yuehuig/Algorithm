@@ -1,5 +1,11 @@
 package 链表;
 
+/**
+ * https://leetcode-cn.com/problems/linked-list-cycle/
+ * 
+ * @author yuehuig
+ *
+ */
 public class _141_环形链表 {
 	
 	public boolean hasCycle(ListNode head) {
@@ -8,7 +14,7 @@ public class _141_环形链表 {
 		}
 		
 		ListNode slowNode = head;
-		ListNode fastNode = head.next;
+		ListNode fastNode = head;
 		while (fastNode != null && fastNode.next != null) {
 			slowNode = slowNode.next;
 			fastNode = fastNode.next.next;
