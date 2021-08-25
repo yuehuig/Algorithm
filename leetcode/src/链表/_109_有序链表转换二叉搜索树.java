@@ -28,7 +28,7 @@ public class _109_有序链表转换二叉搜索树 {
 	private ListNode getMid(ListNode left, ListNode right) {
 		ListNode slow = left;
 		ListNode fast = left;
-		while (fast != null && fast.next != null) {
+		while (fast != right && fast.next != right) {
 			slow = slow.next;
 			fast = fast.next.next;
 		}
