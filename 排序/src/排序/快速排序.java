@@ -74,8 +74,8 @@ public class 快速排序 {
 	public static int provitIndex1(Integer[] array, Integer begin, Integer end) {
 		int provitIdx = begin + (int)(Math.random() * (end - begin));
 		swap1(array, begin, provitIdx);
-		end--;
 		Integer provit = array[begin];
+		end--;
 
 		while (begin < end) {
 			while (begin < end) {

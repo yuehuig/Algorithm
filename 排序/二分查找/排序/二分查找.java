@@ -49,14 +49,15 @@ public class 二分查找 {
 
 
 	public static int bSearch1(int[] a, int n, int value) {
-		int begin = 0, end = n - 1;
+		int begin = 0;
+		int end = n - 1;
 		while (begin <= end) {
 			int mid = begin + ((end - begin) >> 1);
 			if (a[mid] == value) {
 				return mid;
 			} else if (a[mid] < value) {
 				begin = mid + 1;
-			} else  {
+			} else {
 				end = mid - 1;
 			}
 		}
