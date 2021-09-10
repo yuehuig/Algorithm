@@ -66,17 +66,16 @@ public class 快速排序 {
 		if (end - begin < 2) {
 			return;
 		}
-		int provitIdx = provitIndex1(array, begin, end);
+		int provitIdx = provitIdx1(array, begin, end);
 		sort1(array, begin, provitIdx);
 		sort1(array, provitIdx + 1, end);
 	}
 
-	public static int provitIndex1(Integer[] array, Integer begin, Integer end) {
+	public static int provitIdx1(Integer[] array, Integer begin, Integer end) {
 		int provitIdx = begin + (int)(Math.random() * (end - begin));
 		swap1(array, begin, provitIdx);
 		Integer provit = array[begin];
 		end--;
-
 		while (begin < end) {
 			while (begin < end) {
 				if (provit < array[end]) {
@@ -105,4 +104,5 @@ public class 快速排序 {
 		array[m] = array[n];
 		array[n] = temp;
 	}
+
 }

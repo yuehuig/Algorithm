@@ -50,7 +50,7 @@ public class 归并排序 {
 		if (end - begin < 2) {
 			return;
 		}
-		int mid = begin + ((end - begin) >> 1);
+		Integer mid = begin + ((end - begin) >> 1);
 		sort1(array, begin, mid);
 		sort1(array, mid, end);
 		merge1(array, begin, mid, end);
@@ -64,7 +64,6 @@ public class 归并排序 {
 		for (int i = 0; i < le; i++) {
 			tempArr[i] = array[ai + i];
 		}
-
 		while (li < le) {
 			if ((ri < re) && (array[ri] < tempArr[li])) {
 				array[ai++] = array[ri++];
