@@ -64,10 +64,11 @@ public class 归并排序 {
 		for (int i = 0; i < le; i++) {
 			tempArr[i] = array[ai + i];
 		}
+
 		while (li < le) {
 			if ((ri < re) && (array[ri] < tempArr[li])) {
 				array[ai++] = array[ri++];
-			} else {
+			} else  {
 				array[ai++] = tempArr[li++];
 			}
 		}

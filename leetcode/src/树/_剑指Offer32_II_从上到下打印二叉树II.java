@@ -10,7 +10,7 @@ import java.util.Queue;
  * @author yuehuig
  *
  */
-public class _剑指_Offer32_II_从上到下打印二叉树II {
+public class _剑指Offer32_II_从上到下打印二叉树II {
 	
 	public List<List<Integer>> levelOrder(TreeNode root) {
 		List<List<Integer>> list = new LinkedList<List<Integer>>();

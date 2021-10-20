@@ -72,10 +72,11 @@ public class 快速排序 {
 	}
 
 	public static int provitIdx1(Integer[] array, Integer begin, Integer end) {
-		int provitIdx = begin + (int)(Math.random() * (end - begin));
+		int provitIdx = (int)(begin + Math.random() * (end - begin));
 		swap1(array, begin, provitIdx);
 		Integer provit = array[begin];
 		end--;
+
 		while (begin < end) {
 			while (begin < end) {
 				if (provit < array[end]) {
@@ -94,15 +95,15 @@ public class 快速排序 {
 					break;
 				}
 			}
+			array[begin] = provit;
 		}
-		array[begin] = provit;
 		return begin;
 	}
 
 	public static void swap1(Integer[] array, Integer m, Integer n) {
-		Integer temp = array[m];
-		array[m] = array[n];
-		array[n] = temp;
+		Integer temp = array[n];
+		array[n] = array[m];
+		array[m] = temp;
 	}
 
 }

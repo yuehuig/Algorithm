@@ -21,7 +21,7 @@ public class _102_二叉树的层序遍历 {
 		if (root == null) {
 			return list;
 		}
-		
+
 		Queue<TreeNode> queue = new LinkedList<TreeNode>();
 		queue.offer(root);
 		while (queue.isEmpty() == false) {
@@ -30,17 +30,18 @@ public class _102_二叉树的层序遍历 {
 			while (levelSize > 0) {
 				TreeNode node = queue.poll();
 				tempList.add(node.val);
-				
+
 				if (node.left != null) {
 					queue.offer(node.left);
 				}
-				
+
 				if (node.right != null) {
 					queue.offer(node.right);
 				}
-                levelSize--;
+				levelSize--;
 			}
-            list.add(tempList);
+			list.add(tempList);
 		}
 		return list;
+	}
 }
