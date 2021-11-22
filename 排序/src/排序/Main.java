@@ -16,9 +16,9 @@ public class Main {
 //		选择排序.selectionSort1(array);
 //		插入排序.insertionSort2(array);
 //		归并排序.mergeSort(array);
-		归并排序.mergeSort1(array);
+//		归并排序.mergeSort1(array);
 //		快速排序.quickSort(array);
-//		快速排序.quickSort1(array);
+		快速排序.quickSort1(array);
 //		希尔排序.shellSort(array);
 //		计数排序.countSort2(array);
 		System.out.println("\n");
