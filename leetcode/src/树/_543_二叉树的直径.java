@@ -16,25 +16,25 @@ import com.sun.org.apache.xpath.internal.axes.SelfIteratorNoPredicate;
  *
  */
 public class _543_二叉树的直径 {
-	
+
 	int maxL = 0;
 	public int diameterOfBinaryTree(TreeNode root) {
 		if (root == null) {
 			return 0;
 		}
+		maxDepth(root);
+		return maxL;
+	}
 
-		heightOfBinaryTree(root);
-		return maxL - 1; 
-    }
-	
-	public int heightOfBinaryTree(TreeNode root) {
+	private int maxDepth(TreeNode root) {
 		if (root == null) {
 			return 0;
- 		}
-		int lh = heightOfBinaryTree(root.left);
-		int rh = heightOfBinaryTree(root.right);
-		maxL = Math.max(maxL, lh + rh);
-		return Math.max(lh, rh) + 1;
-    }
+		}
+		int maxDL = maxDepth(root.left);
+		int maxDR = maxDepth(root.right);
+		int curL = maxDL + maxDR;
+		maxL = Math.max(maxL, curL);
+		return Math.max(maxDL, maxDR) + 1;
+	}
 
 }

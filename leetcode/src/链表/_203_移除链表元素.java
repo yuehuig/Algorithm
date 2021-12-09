@@ -24,4 +24,20 @@ public class _203_移除链表元素 {
 		}
 		return dummpyHead.next;
     }
+
+	public ListNode removeElements1(ListNode head, int val) {
+		if (head == null) {
+			return head;
+		}
+		ListNode newHead = new ListNode(-1, head);
+		ListNode curNode = newHead;
+		while ((curNode != null) && (curNode.next != null)) {
+			if (curNode.next.val == val) {
+				curNode.next = curNode.next.next;
+			} else {
+				curNode = curNode.next;
+			}
+		}
+		return newHead.next;
+	}
 }

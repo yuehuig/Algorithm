@@ -10,21 +10,14 @@ package 树;
 public class _617_合并二叉树 {
 
 	public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
-		if (root1 == null || root2 == null) {
-			return root1 == null ? root2 : root1;
+		if (root1 == null) {
+			return root2;
+		} else if (root2 == null) {
+			return root1;
 		}
-		return dfs(root1, root2);
+		TreeNode root = new TreeNode(root1.val + root2.val);
+		root.left = mergeTrees(root1.left, root2.left);
+		root.right = mergeTrees(root1.right, root2.right);
+		return root;
     }
-	
-	public TreeNode dfs(TreeNode node1, TreeNode node2) {
-		if (node1 == null || node2 == null) {
-			return node1 == null ? node2 : node1;
-		}
-		
-		node1.val += node2.val;
-		node1.left = dfs(node1.left, node2.left);
-		node1.right = dfs(node1.right, node2.right);
-		return node1;
-	}
-	
 }

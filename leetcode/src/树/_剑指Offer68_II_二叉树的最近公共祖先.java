@@ -1,6 +1,8 @@
 package 树;
 
 import java.awt.Robot;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/
@@ -53,5 +55,50 @@ public class _剑指Offer68_II_二叉树的最近公共祖先 {
 			fNode = node;
 		}
 		return lson || rson || (node.val == p.val || node.val == q.val);
+	}
+
+	// 第三种
+	public TreeNode lowestCommonAncestor3(TreeNode root, TreeNode p, TreeNode q) {
+		List<TreeNode> list1 = getPath(root, p);
+		List<TreeNode> list2 = getPath(root, q);
+		TreeNode node = null;
+		for (int i = 0; i < list1.size() && i < list2.size(); i++) {
+			if (list1.get(i) == list2.get(i)) {
+				node = list1.get(i);
+			} else {
+				break;
+			}
+		}
+		return node;
+	}
+
+	private List<TreeNode> getPath(TreeNode root, TreeNode targetNode) {
+		List<TreeNode> list = new ArrayList();
+		TreeNode curNode = root;
+		while (curNode != targetNode) {
+			list.add(curNode);
+			if (curNode.val > targetNode.val) {
+				curNode = curNode.left;
+			} else {
+				curNode = curNode.right;
+			}
+		}
+		list.add(curNode);
+		return list;
+	}
+
+	// 第四种
+	public TreeNode lowestCommonAncestor4(TreeNode root, TreeNode p, TreeNode q) {
+		TreeNode ancestor = root;
+		while (true) {
+			if (p.val < ancestor.val && q.val < ancestor.val) {
+				ancestor = ancestor.left;
+			} else if (p.val > ancestor.val && q.val > ancestor.val) {
+				ancestor = ancestor.right;
+			} else {
+				break;
+			}
+		}
+		return ancestor;
 	}
 }
