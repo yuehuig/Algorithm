@@ -1,4 +1,4 @@
-package MJ_第三季;
+package 字符串;
 
 /**
  * https://leetcode-cn.com/problems/reverse-words-in-a-string/
@@ -13,10 +13,18 @@ package MJ_第三季;
  * 翻转后单词间应当仅用一个空格分隔。
  * 翻转后的字符串中不应包含额外的空格
  *
+ * 输入：s = "the sky is blue"
+ * 输出："blue is sky the"
+ *
+ * 输入：s = "  hello world  "
+ * 输出："world hello"
+ * 解释：输入字符串可以在前面或者后面包含多余的空格，但是翻转后的字符不能包括。
+ *
+ *
  */
 public class _151_翻转字符串里的单词 {
 
     public String reverseWords(String s) {
-
+        return s;
     }
 }
