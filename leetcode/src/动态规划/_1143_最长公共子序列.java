@@ -118,9 +118,9 @@ public class _1143_最长公共子序列 {
     private int lcs1(char[] charArr1, int i, char[] charArr2, int j) {
         if (i == 0 || j == 0) return 0;
         if (charArr1[i - 1] != charArr2[j - 1]) {
-            return Math.max(lcs(charArr1, i - 1, charArr2, j),
-                    lcs(charArr1, i, charArr2, j - 1));
+            return Math.max(lcs1(charArr1, i - 1, charArr2, j),
+                    lcs1(charArr1, i, charArr2, j - 1));
         }
-        return lcs(charArr1, i - 1, charArr2, j - 1) + 1;
+        return lcs1(charArr1, i - 1, charArr2, j - 1) + 1;
     }
 }
