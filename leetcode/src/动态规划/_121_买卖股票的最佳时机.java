@@ -19,8 +19,8 @@ public class _121_买卖股票的最佳时机 {
         for (int i = 0; i < prices.length; i++) {
             if (prices[i] < minPrice) {
                 minPrice = prices[i];
-            } else if (prices[i] - minPrice > maxP) {
-                maxP = prices[i] - minPrice;
+            } else {
+                maxP = Math.max(prices[i] - minPrice, maxP);
             }
         }
         return maxP;
