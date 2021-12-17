@@ -8,7 +8,7 @@ package 数组;
 public class _面试题_16_16_部分排序 {
 
     /**
-     * 定义数组
+     * 1 定义数组
      * @param array
      * @return
      */
