@@ -1,6 +1,8 @@
 package DFS;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,6 +21,7 @@ public class _47_全排列II {
         }
         levelArr = new int[nums.length];
         used = new boolean[nums.length];
+        Arrays.sort(nums);
         dfs(0, nums);
         return list;
     }
@@ -46,11 +49,8 @@ public class _47_全排列II {
     }
 
     private boolean checkRepeat(int idx, int i, int[] nums) {
-        for (int j = 0; j < i; j++) {
-            if (nums[j] == nums[i]) {
-                return true;
-            }
-        }
-        return false;
+        // 剪枝条件：i > 0 是为了保证 nums[i - 1] 有意义
+        // 写 !used[i - 1] 是因为 nums[i - 1] 在深度优先遍历的过程中刚刚被撤销选择
+        return (i > 0) && (nums[i] == nums[i - 1]) && !used[i - 1];
     }
 }
