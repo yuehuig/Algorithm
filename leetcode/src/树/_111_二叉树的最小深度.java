@@ -64,7 +64,7 @@ public class _111_二叉树的最小深度 {
         }
 
         if (root.right != null) {
-            min = Math.min(min, minDepth(root.right));
+            min = Math.min(min, minDepth1(root.right));
         }
 
         return min + 1;
