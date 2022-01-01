@@ -1,8 +1,5 @@
 package 树;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
@@ -10,6 +7,11 @@ import java.util.Stack;
 
 public class _94_二叉树的中序遍历 {
 
+    /**
+     * 1 递归
+     * @param root
+     * @return
+     */
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> list = new LinkedList<Integer>();
         inorder(root, list);
@@ -23,5 +25,30 @@ public class _94_二叉树的中序遍历 {
         inorder(node.left, list);
         list.add(node.val);
         inorder(node.right, list);
+    }
+
+    /**
+     * 2 迭代
+     * @param root
+     * @return
+     */
+    public List<Integer> inorderTraversal1(TreeNode root) {
+        List<Integer> list = new LinkedList<Integer>();
+        if (root == null) {
+            return list;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode node = root;
+        while (stack.isEmpty() == false || node != null) {
+            while (node != null) {
+                stack.push(node);
+                node = node.left;
+            }
+            node = stack.pop();
+            list.add(node.val);
+            node = node.right;
+        }
+
+        return list;
     }
 }
