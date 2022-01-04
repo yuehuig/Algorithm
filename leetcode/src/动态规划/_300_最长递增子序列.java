@@ -24,10 +24,9 @@ public class _300_最长递增子序列 {
         for (int i = 1; i < nums.length; i++) {
             dp[i] = 1;
             for (int j = 0; j < i; j++) {
-                if (nums[i] <= nums[j]) {
-                    continue;
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(dp[j] + 1, dp[i]);
                 }
-                dp[i] = Math.max(dp[j] + 1, dp[i]);
             }
             max = Math.max(max, dp[i]);
         }
