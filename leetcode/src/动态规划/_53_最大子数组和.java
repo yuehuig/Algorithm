@@ -4,6 +4,7 @@ package 动态规划;
  * https://leetcode-cn.com/problems/maximum-subarray/
  *
  * 剑指 Offer 42. 连续子数组的最大和   https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/
+ * 最大连续子序列和
  *
  * 给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
  * 子数组 是数组中的一个连续部分。
