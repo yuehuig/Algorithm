@@ -33,7 +33,7 @@ public class 最长公共子串 {
         int[][] dp = new int[arr1.length + 1][arr2.length + 1];
         int max = 0;
         for (int i = 1; i <= arr1.length; i++) {
-            for (int j = 1; j < arr2.length; j++) {
+            for (int j = 1; j <= arr2.length; j++) {
                 if (arr1[i - 1] != arr2[j - 1]) {
                     dp[i][j] = 0;
                 } else {
